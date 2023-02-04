@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RocketSneakz</title>
+    <link rel="stylesheet" href="static/cart.css">
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="{{ url_for('home') }}">home</a>
+        <a href="{{ url_for('login') }}">login</a>
+        <a href="{{ url_for('register') }}">register</a>
+        <a href="{{ url_for('about') }}">About us</a>
+        <a href="{{ url_for('contact') }}">Contact us</a>
+        <div class="topnav-right">
+            <a href="{{ url_for('cart') }}"><img src="static/logo/cart.png"></a>
+            <a href="{{ url_for('profile') }}"><img src="static/logo/profile.png"></a>
+        </div>
+    </div>
+
+    <h1>Cart</h1>
+    <table>
+        <tr>
+    <th>Product Name</th>
+    <th>Quantity</th>
+    <th>Size</th>
+    <th>Price</th>
+    <th>Total</th>
+    <th>Remove</th>
+  </tr>
+  {% for item in items %}
+  <tr>
+    <td>{{ item['pname'] }}</td>
+    <td>{{ item['quantity'] }}</td>
+    <td>{{ item['size'] }}</td>
+    <td>{{ item['productprice'] }}</td>
+    <td>{{ item['total_price'] }}</td>
+    <td>
+                <form action="{{ url_for('remove_from_cart', product_id=item.productid) }}" method="post" >
+                    <input type="submit" value="Remove">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h2>Total: {{ total_price }}</h2>
+    <form action="{{ url_for('checkout') }}" >
+        <input type="submit" value="Checkout">
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+  </head>
+  <link rel="stylesheet" href="/static/checkout.css">
+  <body>
+    <h1>Checkout</h1>
+
+    <form action="/submit-order" method="post">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name"><br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address"><br>
+
+      <label for="card-number">Card Number:</label>
+      <input type="text" id="card-number" name="card-number"><br>
+
+      <label for="expiry">Expiry Date:</label>
+      <input type="text" id="expiry" name="expiry"><br>
+
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" name="cvv"><br>
+
+     <form action="{{ url_for('order_confirmation') }}" >
+      <input type="submit" value="Place Order">
+     </form>
+    </form>
+  </body>
+</html>
