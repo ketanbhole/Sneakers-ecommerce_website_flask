@@ -14,6 +14,7 @@ connection = pymysql.connect(
     cursorclass=pymysql.cursors.DictCursor
 )
 
+
 cursor = connection.cursor()
 app.secret_key = 'xyzsdfg'
 
